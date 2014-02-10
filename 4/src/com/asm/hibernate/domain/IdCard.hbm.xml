@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asm.hibernate.domain">
+	<class name="IdCard">
+		<cache usage="read-only"/>
+		<id name="id">
+			<generator class="foreign">
+				<param name="property">person</param>
+			</generator>
+		</id>
+		<property name="validity"></property>
+		<!--one-to-one name="person" constrained="true" fetch="select"></one-to-one-->
+		<one-to-one name="person" constrained="true" fetch="join"></one-to-one>
+	</class>
+</hibernate-mapping>

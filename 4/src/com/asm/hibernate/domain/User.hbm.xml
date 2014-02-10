@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asm.hibernate.domain">
+ <class name="User">
+  <cache include="all" usage="read-write"/>
+
+  <id name="id">
+   <generator class="native"/>
+  </id>
+  <version generated="never" name="version1" type="integer"/>
+  <property generated="never" lazy="false" name="name"/>
+  <property generated="never" lazy="false" name="date"/>
+  <one-to-one name="idCard"/>
+  <query name="selectUserbyIdTheSecond">from User where id=:id</query>
+ </class>
+ <query name="selectUserbyId">from User where id=:id</query>
+ <sql-query name="selectUserSql">
+	<![CDATA[select * from user where id=:id]]>
+</sql-query>
+ <query name="selectUser">from User where id=:id</query>
+</hibernate-mapping>

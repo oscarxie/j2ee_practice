@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asm.hibernate.domain">
+
+	<class name="Department">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name"></property>
+		<set name="emps" inverse="true" lazy="false"  fetch="join"  batch-size="3">
+			<key column="depart_id"></key>
+			<one-to-many class="Employee"/>
+		</set>
+		
+	</class>
+	<query name="selectDept">from Department </query>
+	<query name="selectById">from Department where id:id</query>
+</hibernate-mapping>

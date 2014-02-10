@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.asm.hibernate.domain">
+
+	<class name="People">
+		<cache usage="read-only"/>
+		<id name="id">
+			<generator class="hilo"/>
+		</id>
+	<component name="name">
+		<property name="firstName" column="first_name"></property>
+		<property name="secondName" column="second_name"></property>
+	</component>
+	</class>
+</hibernate-mapping>

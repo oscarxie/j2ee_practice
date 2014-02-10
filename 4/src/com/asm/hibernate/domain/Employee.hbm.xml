@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asm.hibernate.domain">
+ <class discriminator-value="0" name="Employee">
+  <id name="id">
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="name"/>
+  <many-to-one column="depart_id" name="depart"/>
+ </class>
+</hibernate-mapping>

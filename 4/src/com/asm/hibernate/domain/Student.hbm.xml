@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.asm.hibernate.domain">
+	<class name="Student">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name"></property>
+		<set name="teachers" table="teacher_student">
+			<key column="student_id" />
+			<many-to-many class="Teacher" column="teacher_id"/>
+		</set>
+	</class>
+</hibernate-mapping>
