@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<books>
+    <book email="java">
+        <name>name</name>
+        <price>12</price>
+    </book>
+</books>

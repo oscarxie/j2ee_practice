@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+        "http://struts.apache.org/dtds/struts-2.0.dtd">  
+      
+      
+    <struts>  
+            <package name="interceptor1" extends="struts-default">  
+                                
+                              <!-- 定义拦截器 -->  
+                              <interceptors>  
+                                    <interceptor name="myInterceptor" class="action.MyInterceptor"></interceptor>  
+                              </interceptors>  
+                               
+                            <!-- 配置action -->  
+                            <action name="test_interceptor" class="action.Test_InterceptorAction">  
+                                <result name="success">/success.jsp</result>  
+                                <result name="input">/test.jsp</result>  
+                                <!-- 将声明好的拦截器插入action中 -->  
+                                    <interceptor-ref name="myInterceptor"></interceptor-ref>  
+                            </action>  
+                              
+                              
+            </package>  
+    </struts>  

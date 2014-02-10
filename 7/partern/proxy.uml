@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_6-Ocwe3xEeKegpsBZdVwHw">
+  <name xsi:nil="true"/>
+  <elementImport xmi:id="_7NQ-UO3xEeKegpsBZdVwHw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7HGE4O3xEeKegpsBZdVwHw" name="PeopleTalk" clientDependency="_7Jre0O3xEeKegpsBZdVwHw">
+    <ownedComment xmi:id="_7HmbMO3xEeKegpsBZdVwHw">
+      <body>/** 
+ * 真实主题角色：定义真实的对象。
+ * @author 
+ */
+</body>
+    </ownedComment>
+    <ownedAttribute xmi:id="_7NSzgO3xEeKegpsBZdVwHw" name="username" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_7NWd4O3xEeKegpsBZdVwHw" name="age" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <interfaceRealization xmi:id="_7Jre0O3xEeKegpsBZdVwHw" name="ITalk" supplier="_7Htv8O3xEeKegpsBZdVwHw" client="_7HGE4O3xEeKegpsBZdVwHw" contract="_7Htv8O3xEeKegpsBZdVwHw"/>
+    <ownedOperation xmi:id="_7Nj5QO3xEeKegpsBZdVwHw" name="talk" visibility="public">
+      <ownedParameter xmi:id="_7Nj5Qe3xEeKegpsBZdVwHw" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7Nm8kO3xEeKegpsBZdVwHw" name="getName" visibility="public">
+      <ownedParameter xmi:id="_7Nm8ke3xEeKegpsBZdVwHw" name="return" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7NoxwO3xEeKegpsBZdVwHw" name="setName" visibility="public">
+      <ownedParameter xmi:id="_7Noxwe3xEeKegpsBZdVwHw" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7Np_4O3xEeKegpsBZdVwHw" name="getAge" visibility="public">
+      <ownedParameter xmi:id="_7Np_4e3xEeKegpsBZdVwHw" name="return" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7NscIO3xEeKegpsBZdVwHw" name="setAge" visibility="public">
+      <ownedParameter xmi:id="_7NscIe3xEeKegpsBZdVwHw" name="age">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_7Htv8O3xEeKegpsBZdVwHw" name="ITalk">
+    <ownedOperation xmi:id="_7NuRUO3xEeKegpsBZdVwHw" name="talk" visibility="public">
+      <ownedParameter xmi:id="_7NuRUe3xEeKegpsBZdVwHw" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7Hu-EO3xEeKegpsBZdVwHw" name="TalkProxy" clientDependency="_7NuRUu3xEeKegpsBZdVwHw">
+    <ownedComment xmi:id="_7HwMMO3xEeKegpsBZdVwHw">
+      <body>/** 
+ * 代理主题角色：内部包含对真实主题的引用，并且提供和真实主题角色相同的接口。
+ * @author 
+ */
+</body>
+    </ownedComment>
+    <ownedAttribute xmi:id="_7NwGgO3xEeKegpsBZdVwHw" name="talker" visibility="private" type="_7Htv8O3xEeKegpsBZdVwHw" association="_7PHYcO3xEeKegpsBZdVwHw"/>
+    <interfaceRealization xmi:id="_7NuRUu3xEeKegpsBZdVwHw" name="ITalk" supplier="_7Htv8O3xEeKegpsBZdVwHw" client="_7Hu-EO3xEeKegpsBZdVwHw" contract="_7Htv8O3xEeKegpsBZdVwHw"/>
+    <ownedOperation xmi:id="_7NxUoO3xEeKegpsBZdVwHw" name="talk" visibility="public">
+      <ownedParameter xmi:id="_7NxUoe3xEeKegpsBZdVwHw" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7NzJ0O3xEeKegpsBZdVwHw" name="talk" visibility="public">
+      <ownedParameter xmi:id="_7NzJ0e3xEeKegpsBZdVwHw" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_7NzJ0u3xEeKegpsBZdVwHw" name="singname">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_7N0X8O3xEeKegpsBZdVwHw" name="sing" visibility="private">
+      <ownedParameter xmi:id="_7N0X8e3xEeKegpsBZdVwHw" name="singname">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7HwMMe3xEeKegpsBZdVwHw" name="ProxyPattern">
+    <ownedComment xmi:id="_7HxaUO3xEeKegpsBZdVwHw">
+      <body>/** 
+ * 代理测试类，使用代理
+ */
+</body>
+    </ownedComment>
+    <ownedOperation xmi:id="_7N20MO3xEeKegpsBZdVwHw" name="main" visibility="public" isStatic="true">
+      <ownedParameter xmi:id="_7N20Me3xEeKegpsBZdVwHw" name="args">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7N20Mu3xEeKegpsBZdVwHw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7N20M-3xEeKegpsBZdVwHw"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7PHYcO3xEeKegpsBZdVwHw" memberEnd="_7NwGgO3xEeKegpsBZdVwHw _7PHYce3xEeKegpsBZdVwHw">
+    <ownedEnd xmi:id="_7PHYce3xEeKegpsBZdVwHw" name="TalkProxy" type="_7Hu-EO3xEeKegpsBZdVwHw" association="_7PHYcO3xEeKegpsBZdVwHw"/>
+  </packagedElement>
+</uml:Model>

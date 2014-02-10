@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 该属性指定需要Struts 2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts 2处理。如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+	<constant name="struts.action.extension" value="do" />
+    <constant name="struts.objectFactory" value="spring" /> 
+	<constant name="struts.custom.i18n.resources"
+		value="messages,errors" />
+	<!-- 该属性指定Struts 2文件上传中整个请求内容允许的最大字节数。 -->
+	<constant name="struts.multipart.maxSize" value="2097152" />
+	<!-- struts2的主题样式，可以通过不同的模块实现主题目 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 该属性设置Struts 2是否允许在Action名中使用斜线，该属性的默认值是false。如果开发者希望允许在Action名中使用斜线，则可设置该属性为true。 -->
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<!-- 是否不扫描类。一般要设为false，否则convention插件不起作用，零配置也没有意义 -->
+	<constant name="struts.convention.action.disableScanning" value="true" />
+	
+	
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<!-- Interceptor to handle allowing only admins to certain actions -->
+			<interceptor name="login" class="loginInterceptor" />
+			<!-- Copied from struts-default.xml and changed validation exclude methods -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="defaultStack">  
+                    <param name="exception.logEnabled">true</param>  
+                    <param name="exception.logLevel">error</param>  
+                </interceptor-ref>  
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="defaultStack" />
+		<!-- 上边是interceptor配置 -->
+		<action name="login" class="loginAction">
+			<result name="userList" type="redirectAction">userInfo!list.do</result>
+			<result name="Error">/login.jsp</result>
+		</action>		
+		
+		<action name="userInfo" class="userInfoAction">
+			<result name="userList" type="redirectAction">userInfo!list.do</result>
+			<result name="list">/userList.jsp</result>
+			<result name="update">/userUpdate.jsp</result>
+			<result name="add">/userAdd.jsp</result>
+		</action>			
+	</package>
+</struts>

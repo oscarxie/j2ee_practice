@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-lazy-init="true">
+
+
+
+	<!-- ==============================利用spring 利用aspectj来配置AOP================================ -->
+
+	<!-- 声明一个业务类 -->
+	<bean id="aspectBusiness" class="aop.schema.AspectBusiness" />
+
+	<!-- 声明通知类 -->
+	<bean id="aspectAdvice" class="aop.schema.AspectAdvice" />
+ 	<bean id="logInterceptor" class="aop.schema.EventlogAdvice"/>
+ 	<aop:config>
+ 		<aop:pointcut id="point_cut" expression="execution(* aop.schema.*.*(..))" />
+		<aop:aspect id="businessAspect" ref="aspectAdvice" order="2">	
+			<aop:around method="doAround" pointcut-ref="point_cut" />		
+		</aop:aspect>
+		<aop:aspect id="logAspect" ref="logInterceptor" order="1">
+             <aop:around method="serviceIntercept" pointcut-ref="point_cut" />
+       </aop:aspect>
+	</aop:config>
+	
+
+</beans>

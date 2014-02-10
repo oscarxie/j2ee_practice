@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+ <class name="User">
+  <cache include="all" usage="read-write"/>
+  
+  <id name="id">
+   <generator class="native"/>
+  </id>
+ 
+  <property name="username"/>
+   <property name="password" />
+  
+  
+ </class>
+ 
+<query name="selectUser">from User</query>
+<query name="selectUserbyId">from User where id=:id</query>
+<query name="selectUserbyName">from User where username=:username</query>
+ 
+
+ 
+</hibernate-mapping>

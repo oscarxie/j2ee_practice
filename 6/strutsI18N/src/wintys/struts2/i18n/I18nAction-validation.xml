@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"   		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+ 
+ <validators>
+ 	<field name="age">
+ 		<field-validator type="conversion" short-circuit="true">
+ 			<!-- before i18n:<message>age conversion error</message> -->
+ 			<message key="wintys.i18n.age.conversion.error" />
+ 		</field-validator>
+ 		<field-validator type="int">
+ 			<param name="min">1</param>
+ 			<param name="max">150</param>
+ 			<!-- <message>age range: ${min} ~ ${max}</message> -->
+ 			<message key="wintys.i18n.age.exceed.range"/>
+ 		</field-validator>
+ 	</field>
+ </validators>

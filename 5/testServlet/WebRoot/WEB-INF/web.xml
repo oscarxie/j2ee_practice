@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ <context-param>
+  <description>aa</description>
+  <param-name>aa</param-name>
+  <param-value>aa</param-value>
+ </context-param>
+ <servlet>
+  <display-name>Validator</display-name>
+  <servlet-name>Validator</servlet-name>
+  <servlet-class>com.training.Validator</servlet-class>
+  <init-param>
+   <param-name>time</param-name>
+   <param-value>20</param-value>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Validator</servlet-name>
+  <url-pattern>/Validator</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+  <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+ <jsp-config>
+  <jsp-property-group>
+   <url-pattern>*.jsp</url-pattern>
+   <el-ignored>true</el-ignored>
+  </jsp-property-group>
+ </jsp-config>
+ <login-config>
+  <auth-method>BASIC</auth-method>
+ </login-config>
+</web-app>

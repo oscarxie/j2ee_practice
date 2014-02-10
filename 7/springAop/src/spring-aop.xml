@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-lazy-init="true">
+
+    <!-- ==============================利用spring自己的aop配置================================ -->
+    <!-- 声明一个业务类 -->
+    <bean id="baseBusiness" class="aop.base.BaseBusiness" />
+    
+    <!-- 声明通知类 -->
+    <bean id="baseBefore" class="aop.base.advice.BaseBeforeAdvice" />
+    <bean id="baseAfterReturn" class="aop.base.advice.BaseAfterReturnAdvice" />
+    <bean id="baseAfterThrows" class="aop.base.advice.BaseAfterThrowsAdvice" />
+    <bean id="baseAround" class="aop.base.advice.BaseAroundAdvice" />
+
+    <!-- 指定切点匹配类 -->
+    <bean id="pointcut" class="aop.base.pointcut.Pointcut" />
+
+    <!-- 包装通知，指定切点 -->
+    <bean id="matchBeforeAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut">
+            <ref bean="pointcut" />
+        </property>
+        <property name="advice">
+            <ref bean="baseBefore" />
+        </property>
+    </bean>
+
+    <!-- 使用ProxyFactoryBean 产生代理对象 -->
+    <bean id="businessProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!-- 代理对象所实现的接口 ，如果有接口可以这样设置 -->
+        <property name="proxyInterfaces">
+            <value>aop.base.IBaseBusiness</value>
+        </property>
+
+        <!-- 设置目标对象 -->
+        <property name="target">
+            <ref local="baseBusiness" />
+        </property>
+        <!-- 代理对象所使用的拦截器 -->
+        <property name="interceptorNames">
+            <list>
+                <value>matchBeforeAdvisor</value>
+                <value>baseAfterReturn</value>
+                <value>baseAround</value>
+            </list>
+        </property>
+    </bean>
+</beans>

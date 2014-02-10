@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+      "http://struts.apache.org/dtds/struts-2.3.dtd">
+  
+  <struts>
+     <package name="test" extends="struts-default" namespace="/test">
+  
+          <interceptors>
+             <interceptor name="loginJudge"
+                 class="action.UsrLoginInterceptor">
+             </interceptor>
+             <!-- 自定义拦截器栈 -->
+             <interceptor-stack name="myDefaultStack">
+                <interceptor-ref name="loginJudge"></interceptor-ref>
+                 <interceptor-ref name="defaultStack"></interceptor-ref>
+             </interceptor-stack>
+         </interceptors>
+
+         <!-- 将自定义拦截器栈设置默认的拦截器 -->
+         <default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+ 
+         <global-results>
+     <result name="login" type="redirect">/login.jsp</result>
+         </global-results>
+
+        <action name="logintest" class="action.LoginAction">
+             <result name="success" type="redirectAction">
+                <param name="actionName">sayhello</param>
+                 <param name="namespace">/test</param>
+                 <param name="username">${username}</param>
+             </result>
+         </action>
+        
+        <action name="sayhello" class="action.SayHelloAction">
+             <result name="success">/welcome.jsp</result>
+             <result name="login">/login.jsp</result>
+         </action>
+     </package>
+ </struts>

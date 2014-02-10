@@ -1,0 +1,1 @@
+<%@ page contentType="text/html;charset=gb2312" %> ÍË³ö»á»°<% session.invalidate(); %> 

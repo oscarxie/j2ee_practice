@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.action.extension" value="do"/><!-- 定义访问时的后缀 -->
+	<constant name="struts.ui.theme" value="simple" /> <!-- 不加这一句jsp显示效果会不正常 -->
+	<constant name="struts.custom.i18n.resources" value="messages,errors" /><!-- 设置国际化文件的文件头 -->
+	<package name="train " namespace="/test" extends="struts-default">
+		
+		
+		<action name="login" class="helloworld" method="login">
+			<result name="success">/index.jsp
+			</result>
+		</action>
+		<!-- http://localhost:8080/Struts2test2/test/helloworld-->
+	</package>	
+	
+	
+	
+</struts>

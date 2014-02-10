@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+                        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!-- a tag library descriptor -->
+<taglib>
+ <tlibversion>1.0</tlibversion>
+ <jspversion>2.0</jspversion>
+ <shortname>myfont</shortname>
+ <info>info</info>
+ <tag>
+  <name>myfont</name>
+  <tagclass>com.training.Myfont</tagclass>
+  <bodycontent>JSP</bodycontent>
+  <info>info</info>
+  <attribute>
+   <name>bgColor</name>
+  </attribute>
+  <attribute>
+   <name>color</name>
+   <required>true</required>
+  </attribute>
+  <attribute>
+   <name>align</name>
+  </attribute>
+  <attribute>
+   <name>fontSize</name>
+  </attribute>
+  <attribute>
+   <name>border</name>
+  </attribute>
+  <attribute>
+   <name>bordercolor</name>
+  </attribute>
+  <attribute>
+   <name>width</name>
+  </attribute>
+ </tag>
+</taglib>
